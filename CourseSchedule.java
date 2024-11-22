@@ -33,7 +33,8 @@ class Solution {
         while(!q.isEmpty()){ // O(V + E)
             int curr = q.poll();
             List<Integer> dependents = adjacencyList.get(curr); // for each vertex
-            for(int dependent : dependents){
+            if(dependents != null){
+                for(int dependent : dependents){
                 indegrees[dependent]--;
                 if(indegrees[dependent] == 0){
                     q.add(dependent);
@@ -44,6 +45,8 @@ class Solution {
                 }
 
             }
+            }
+            
         }
         return false;
 
